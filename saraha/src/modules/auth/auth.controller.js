@@ -3,23 +3,11 @@ import { successResponse } from '../../common/utils/index.js';
 import { signup, login, signupWithGmail, verifyEmail } from './auth.service.js';
 
 const router = Router();
-
-// 1. Signup Route
 router.post("/signup", async (req, res, next) => {
-    try {
-        const result = await signup(req.body);
-        return successResponse({
-            res,
-            status: 201,
-            message: "User created successfully",
-            data: { account: result }
-        });
-    } catch (error) {
-        next(error);
-    }
-});
+  const account = await signup(req.body)
+  return successResponse({ res, status: 201, data: { account } })
+})
 
-// 2. Login Route
 router.post("/login", async (req, res, next) => {
     try {
         const result = await login(req.body, "Saraha_App_v1"); 
