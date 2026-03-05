@@ -9,18 +9,13 @@ router.post("/signup", async (req, res, next) => {
 })
 
 router.post("/login", async (req, res, next) => {
-    try {
-        const result = await login(req.body, "Saraha_App_v1"); 
+  //http://127.0.0.1:3000
+  //https://127.0.0.1:3000
+  console.log(`${req.protocol}://${req.host}`);
 
-        return successResponse({
-            res,
-            message: "Logged in successfully",
-            data: result 
-        });
-    } catch (error) {
-        next(error);
-    }
-});
+  const credentials = await login(req.body, `${req.protocol}://${req.host}`)
+  return successResponse({ res, data: { credentials } })
+})
 
 router.post("/verify-email", async (req, res, next) => {
     try {
