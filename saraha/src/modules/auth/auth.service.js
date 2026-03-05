@@ -100,24 +100,7 @@ export const login = async (inputs, issuer) => {
 
     return await createLoginCredentials({ user, issuer });
 };
-/*
-{
-    iss: 'https://accounts.google.com',
-    azp: '274006089540-up03ov50h5ogtb6eem6e40n9istrst06.apps.googleusercontent.com',
-    aud: '274006089540-up03ov50h5ogtb6eem6e40n9istrst06.apps.googleusercontent.com',
-    sub: '110401125912574728717',
-    email: 'habibamo942@gmail.com',
-    email_verified: true,
-    nbf: 1772409281,
-    name: 'Habiba Mohamed',
-    picture: 'https://lh3.googleusercontent.com/a/ACg8ocIK9jXIXrd4sQMhRMSf01ZpQ5Cvzhjd6wq7IZTqGpYx2qBQXRY=s96-c',
-    given_name: 'Habiba',
-    family_name: 'Mohamed',
-    iat: 1772409581,
-    exp: 1772413181,
-    jti: '49c3e3150e961699db8764ffa84101fe681b10ed'
-}
- */
+
 async function verifyGoogleAccount(idToken) {
     const client = new OAuth2Client();
     const ticket = await client.verifyIdToken({
